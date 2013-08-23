@@ -36,6 +36,16 @@ define('DB_COLLATE', '');
 define('WP_DEBUG', false);
 
 /**
+ * Set to false if you don't want WordPress to keep different
+ * versions of posts around.
+ *
+ * false = no post revisions
+ * true = way too many post revisions, this is the default that you should not use
+ * int = if you want to have revisions enabled you can set a number to limit them
+ */
+define('WP_POST_REVISIONS', false);
+
+/**
  * WordPress Localized Language, defaults to English.
  *
  * Change this to localize WordPress. A corresponding MO file for the chosen
@@ -44,6 +54,9 @@ define('WP_DEBUG', false);
  * language support.
  */
 define('WPLANG', '');
+
+/** The number of days items are stored in trash. */
+define('EMPTY_TRASH_DAYS', 30);
 
 /**#@+
  * Authentication Unique Keys and Salts.
@@ -70,6 +83,8 @@ define('NONCE_SALT',       'your unique keys here');
  *
  * You can have multiple installations in one database if you give each a unique
  * prefix. Only numbers, letters, and underscores please!
+ *
+ * NOTE: This should be changed to something unique for security.
  */
 $table_prefix  = 'wp_';
 
