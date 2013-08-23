@@ -14,6 +14,43 @@
  * @package WordPress
  */
 
+/** Determine which configuration is active. */
+define( 'DB_CREDENTIALS_PATH', dirname(ABSPATH) ); // cache it for multiple use
+define( 'WP_LOCAL_SERVER', file_exists( DB_CREDENTIALS_PATH . '/local-config.php' ) );
+define( 'WP_DEV_SERVER', file_exists( DB_CREDENTIALS_PATH . '/dev-config.php' ) );
+define( 'WP_STAGING_SERVER', file_exists( DB_CREDENTIALS_PATH . '/staging-config.php' ) );
+
+/** Load the credentials. */
+if ( WP_LOCAL_SERVER )
+    require DB_CREDENTIALS_PATH . '/local-config.php';
+elseif ( WP_DEV_SERVER )
+    require DB_CREDENTIALS_PATH . '/dev-config.php';
+elseif ( WP_STAGING_SERVER )
+    require DB_CREDENTIALS_PATH . '/staging-config.php';
+else
+    require DB_CREDENTIALS_PATH . '/production-config.php';
+
+/** Set debugging-mode according to your environment setup. */
+if ( WP_LOCAL_SERVER || WP_DEV_SERVER ) {
+
+    define( 'WP_DEBUG', true );
+    define( 'WP_DEBUG_LOG', true ); // Stored in wp-content/debug.log
+    define( 'WP_DEBUG_DISPLAY', true );
+
+    define( 'SCRIPT_DEBUG', true );
+    define( 'SAVEQUERIES', true );
+
+} else if ( WP_STAGING_SERVER ) {
+
+    define( 'WP_DEBUG', true );
+    define( 'WP_DEBUG_LOG', true ); // Stored in wp-content/debug.log
+    define( 'WP_DEBUG_DISPLAY', false );
+
+} else {
+
+    define( 'WP_DEBUG', false );
+}
+
 /** Point WordPress to the subdirectory installation. */
 define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/wordpress');
 define('WP_HOME',    'http://' . $_SERVER['HTTP_HOST']);

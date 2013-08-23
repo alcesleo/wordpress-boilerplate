@@ -36,7 +36,9 @@ TODO: Check if this actually works.
         git add wordpress
         git commit -m 'Checked out latest version of WordPress'
 
-6. Start working on your site!
+6. Create a `local-config.php` with the contents of this [gist](https://gist.github.com/alcesleo/6319370) in the `www/`-directory to set up your credentials.
+
+7. Start working on your site!
 
 ### Versioning the database
 
