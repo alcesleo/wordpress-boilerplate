@@ -13,7 +13,7 @@ password=root
 database=database
 
 # Create the database backup
-mysqldump --skip-extended-insert --user=$user --password=$password $database > www/database/database.sql
-git add www/database/database.sql
+mysqldump --skip-extended-insert --user=$user --password=$password $database > db-backup/database.sql
+git add db-backup/database.sql
 
 echo "Database saved!"
