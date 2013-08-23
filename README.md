@@ -1,24 +1,168 @@
 # WordPress boilerplate
 
-This is a repo where i collect WordPress best-practices.
+This is a repo where i collect WordPress best-practices, and try to make managing a WordPress site under git less of a hassle.
 
-## Instructions
+## Setup
+
+**WARNING: This has not yet been tested. If someone actually use this I appreciate any help with keeping the readme correct/helpful or suggestions of better ways of doing things.**
 
 TODO: Check if this actually works.
 
-1. `git clone --recursive git@github.com:alcesleo/wordpress-boilerplate.git`
-2. `cd wordpress-boilerplate && rm -rf .git` this should leave `.gitmodules` untouched for your own repo.
-3. `git init`
-4. `cd wordpress && git checkout the_version_you_want`
-5. Commit it.
+1.  Clone this repository
+
+        git clone --recursive git@github.com:alcesleo/wordpress-boilerplate.git
+
+2.  Remove the git directory, otherwise you will have commit
+    messages from this repo in yours.
+
+        cd wordpress-boilerplate
+        rm -rf .git
+
+    *This should leave `.gitmodules` untouched for your own repo. I'm not quite sure if this works yet.*
+
+3.  Create a clean git repo in the directory
+
+        git init
+
+4.  Check out the version of WordPress you want.
+
+        cd wordpress
+        git fetch --tags
+        git checkout 3.6
+
+5.  Commit the submodule state in the parent repo
+
+        cd ..
+        git add wordpress
+        git commit -m 'Checked out latest version of WordPress'
+
+6. Start working on your site!
+
+### Versioning the database
+
+#### The manual way
+
+1. Run `scripts/backupdb.sh` to save the database as a text file and stage it.
+2. `git commit` it.
+
+I tend to use this way, since I have more control and not just dumping WordPress settings
+I don't even know I've changed alongside with code-changes. But many people seem to like
+having a snapshot of the database tied to every commit.
+
+#### The automatic way (with hooks)
+
+Here, we use git-hooks to run the script every time we do a commit.
+
+Symlink the script to the hooks-directory
+
+    ln -s scripts/backupdb.sh .git/hooks/pre-commit
+
+Mark it as executable
+
+    chmod +x .git/hooks/pre-commit
+
+## Managing the submodule
+
+### Updating / downgrading WordPress:
+
+    cd wordpress
+    git checkout 3.5.1
+    cd ..
+    git add wordpress
+    git commit -m "Checked out WordPress to 3.5.1"
+    git push
+
+Then you need to visit the sites admin and update the database (this is a matter of clicking ok, and you're done).
+
+Another developer who wants to have WordPress changed to that tag, does this:
+
+    git pull
+    git submodule update
+
+`git pull` changes which commit their submodule directory points to. `git submodule update` actually merges in the new code.
+
+## Deployment
+
+There is quite a lot to think about when deploying a WordPress site. In short, you need to:
+
+1. **Upload the files to your hosting server.** You can do this manually (with something like FileZilla), or you can use an automated tool like git-ftp, or if you're really serious, and have SSH-access - Capistrano.
+
+2. **Restore the database.** Use phpMyAdmin or plain MySQL commands to restore the `database.sql`-file to your live server.
+
+3. **Update the links.** Easiest way is `searchreplacedb2.php`, but can be done with MySQL-commands as well.
+
+
+
+### Using [git-ftp](https://github.com/git-ftp/git-ftp)
+
+1.  Install it:
+
+        brew install git-ftp
+
+2. Configure it:
+
+        git config git-ftp.user username
+        git config git-ftp.url ftp.example.com
+        git config git-ftp.password longSecurePassword
+
+        # Optional, if you keep your webroot in a directory and not as the root of the repository
+        git config git-ftp.syncroot htdocs/
+
+3. Do one of the following:
+
+    + **If everything you need to upload is tracked by git.**
+
+            # this uploads all files tracked by git
+            git ftp init
+
+    + **If you need to upload lots of stuff that's gitignored the first time.**
+
+        This probably includes the uploads-folder, searchreplacedb2, and stuff like that.
+
+        1. Upload everything manually
+        2. `git ftp catchup` - this tells git-ftp that you know what you're doing,
+            and you're sure that what you've uploaded exactly matches what's in your
+            repository. After this git-ftp will work fine.
+
+
+4. You're all set! Now whenever you've made changes, you can update your server with `git ftp push`
+
+A bit of a setup-phase, and it can be a little tinkery with setting the syncroot etc. But `git ftp push` is fantastic and it is totally worth it.
+
+### Using [searchreplacedb2.php](http://interconnectit.com/products/search-and-replace-for-wordpress-databases/)
+
+WordPress stores a lot of links in the database including your domain. If you've been developing locally there's probably a bunch of links like <http://localhost:8888/somestuff> that needs to change to <http://www.yourdomain.com/somestuff>.
+
+This is exactly what this tool does. Upload it to you webroot, go to that address and follow the steps to do a search and replace.
+
+**Don't forget to remove the file when you're done.**
+
+## Troubleshooting
+
+This is things I've figured out about WordPress in general, not just about this repository.
+
++ If your links stop working when you move the site, turn off and turn on permalinks.
++ Custom Post Types also need a re-save of the permalink-structure to work.
++ Really most of 404-problems can be solved with re-saving the permalink-structure.
++ Can't change the page-slug, getting something like "page-2"? Empty the trash!
+
+## Tips
+
++ These plugins are really worth checking out:
+    + Contact Form 7
+    + Adminimize
+    + Clean Options
+    + Widget Logic
+    + Better Delete Revision - In case you didn't disable them from the start
+
 
 ## TODO
 
-+ git-hooks for database backup
++ add db-backup-folder?
 + wp-content
-    + db-backup
     + templates?
         + plugin
         + child theme
 + wp-config
     + local-config
+    + gist
