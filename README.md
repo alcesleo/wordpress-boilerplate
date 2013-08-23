@@ -4,7 +4,7 @@ This is a repo where i collect WordPress best-practices, and try to make managin
 
 ## Setup
 
-**WARNING: This has not yet been tested. If someone actually use this I appreciate any help with keeping the readme correct/helpful or suggestions of better ways of doing things.**
+**WARNING: This has not yet been tested. If someone actually use this I'd appreciate any help with keeping the readme correct/helpful or suggestions of better ways of doing things.**
 
 TODO: Check if this actually works.
 
