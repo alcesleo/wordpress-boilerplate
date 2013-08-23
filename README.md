@@ -110,24 +110,32 @@ There is quite a lot to think about when deploying a WordPress site. In short, y
         # even if it is tracked by git.
         git config git-ftp.syncroot www/
 
-3. Do one of the following:
+3. Upload the files in **one** of the following ways:
 
-    + **If everything you need to upload is tracked by git.**
+    Since the `uploads`-folder, `searchreplacedb2.php` etc should not be under git, you need to upload them separately.
+
+    +   Using git-ftp to begin with:
 
             # this uploads all files tracked by git
             git ftp init
 
-    + **If you need to upload lots of stuff that's gitignored the first time.**
+        Then upload anything else that's ignored afterwards.
 
-        This probably includes the uploads-folder, searchreplacedb2, and stuff like that.
+    + Doing an initial manual upload:
 
-        1. Upload everything manually
-        2. `git ftp catchup` - this tells git-ftp that you know what you're doing,
+        1. Upload everything manually, with something like FileZilla.
+        2. Run this:
+
+                git ftp catchup
+
+            This tells git-ftp that you know what you're doing,
             and you're sure that what you've uploaded exactly matches what's in your
-            repository. After this git-ftp will work fine.
+            repository.
 
 
-4. You're all set! Now whenever you've made changes, you can update your server with `git ftp push`
+4. You're all set! Now, pushing your changes to the server is as simple as:
+
+        git ftp push
 
 A bit of a setup-phase, and it can be a little tinkery with setting the syncroot etc. But `git ftp push` is fantastic and it is totally worth it.
 
@@ -160,6 +168,7 @@ This is things I've figured out about WordPress in general, not just about this 
 
 ## TODO
 
++ backupdb.sh should not have to be run from the root
 + add db-backup-folder?
 + wp-content
     + templates?
