@@ -105,8 +105,10 @@ There is quite a lot to think about when deploying a WordPress site. In short, y
         git config git-ftp.url ftp.example.com
         git config git-ftp.password longSecurePassword
 
-        # Optional, if you keep your webroot in a directory and not as the root of the repository
-        git config git-ftp.syncroot htdocs/
+        # This makes git-ftp only upload files inside the www-directory.
+        # Anything above that will not be uploaded to your server,
+        # even if it is tracked by git.
+        git config git-ftp.syncroot www/
 
 3. Do one of the following:
 
