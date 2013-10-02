@@ -42,6 +42,14 @@ TODO: Check if this actually works.
 
 ### Versioning the database
 
+**NOTE: `mysqldump` needs to be in your path for this to work.** If you are using MAMP that is not the case by default.
+
+You can either add a symlink in your local bin:
+
+    ln -s /Applications/MAMP/Library/bin /usr/local/bin
+
+Or simply add it to your path.
+
 #### The manual way
 
 1. Run `scripts/backupdb.sh` to save the database as a text file and stage it.
@@ -116,7 +124,7 @@ There is quite a lot to think about when deploying a WordPress site. In short, y
 
     Since the `uploads`-folder, `searchreplacedb2.php` etc should not be under git, you need to upload them separately.
 
-    +   Using git-ftp to begin with:
+    + Using git-ftp to begin with:
 
             # this uploads all files tracked by git
             git ftp init
@@ -170,7 +178,6 @@ This is things I've figured out about WordPress in general, not just about this 
 
 ## TODO
 
-+ backupdb.sh should not have to be run from the root
 + add db-backup-folder?
 + wp-content
     + templates?
@@ -178,4 +185,3 @@ This is things I've figured out about WordPress in general, not just about this 
         + child theme
 + wp-config
     + local-config
-    + gist
