@@ -58,12 +58,6 @@ define('WP_HOME',    'http://' . $_SERVER['HTTP_HOST']);
 define('WP_CONTENT_DIR', $_SERVER['DOCUMENT_ROOT'] . '/wp-content');
 define('WP_CONTENT_URL', 'http://' . $_SERVER['HTTP_HOST'] . '/wp-content');
 
-/** MySQL settings */
-define('DB_NAME', 'your database name');
-define('DB_USER', 'your database user');
-define('DB_PASSWORD', 'your database password');
-define('DB_HOST', 'localhost');
-
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
 
