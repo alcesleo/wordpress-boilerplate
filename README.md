@@ -18,14 +18,14 @@ This is a repo where i collect WordPress best-practices, and try to make managin
 
 2. Swap out the origin of the project to your own
 
-    # Change into the repo
-    cd wordpress-boilerplate
+        # Change into the repo
+        cd wordpress-boilerplate
 
-    # Remove origin
-    git remote rm origin
+        # Remove origin
+        git remote rm origin
 
-    # Add your own origin
-    git remote add origin <url_from_your_repo>
+        # Add your own origin
+        git remote add origin <url_from_your_repo>
 
 3.  Check out the version of WordPress you want.
 
