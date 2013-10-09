@@ -120,13 +120,11 @@ Another developer who wants to have WordPress changed to that tag, does this:
 
 There is quite a lot to think about when deploying a WordPress site. In short, you need to:
 
-1. **Upload the files to your hosting server.** You can do this manually (with something like FileZilla), or you can use an automated tool like git-ftp, or if you're really serious, and have SSH-access - Capistrano.
+1. **Upload the files to your hosting server.** You can do this manually (with something like FileZilla), or you can use an automated tool like git-ftp, or if you're really serious, and have SSH-access - Capistrano. Don't forget to upload your `production-config.php
 
 2. **Restore the database.** Use phpMyAdmin or plain MySQL commands to restore the `database.sql`-file to your live server.
 
 3. **Update the links.** Easiest way is `searchreplacedb2.php`, but can be done with MySQL-commands as well.
-
-
 
 ### Using [git-ftp](https://github.com/git-ftp/git-ftp)
 
