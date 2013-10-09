@@ -6,35 +6,32 @@ This is a repo where i collect WordPress best-practices, and try to make managin
 
 **WARNING: This has not yet been tested. If someone actually use this I'd appreciate any help with keeping the readme correct/helpful or suggestions of better ways of doing things.**
 
-TODO: Check if this actually works.
-
 1.  Clone this repository
 
         git clone --recursive git@github.com:alcesleo/wordpress-boilerplate.git
 
-2.  Remove the git directory, otherwise you will have commit
-    messages from this repo in yours.
+2. Swap out the origin of the project to your own
 
-        cd wordpress-boilerplate
-        rm -rf .git
+    # Change into the repo
+    cd wordpress-boilerplate
 
-    *This should leave `.gitmodules` untouched for your own repo. I'm not quite sure if this works yet.*
+    # Remove origin
+    git remote rm origin
 
-3.  Create a clean git repo in the directory
+    # Add your own origin
+    git remote add origin <url_from_your_repo>
 
-        git init
-
-4.  Check out the version of WordPress you want.
+3.  Check out the version of WordPress you want.
 
         cd wordpress
         git fetch --tags
         git checkout 3.6
 
-5.  Commit the submodule state in the parent repo
+4.  Commit the submodule state in the parent repo
 
         cd ..
         git add wordpress
-        git commit -m 'Checked out latest version of WordPress'
+        git commit -m 'Checked out version 3.6 of WordPress'
 
 6. Create a `local-config.php` with the contents of this [gist](https://gist.github.com/alcesleo/6319370) in the `www/`-directory to set up your credentials.
 
