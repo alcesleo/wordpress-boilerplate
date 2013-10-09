@@ -51,6 +51,7 @@ if ( WP_LOCAL_SERVER || WP_DEV_SERVER ) {
     define( 'WP_DEBUG', false );
 }
 
+// TODO: Account for whole site in a subdirectory
 /** Point WordPress to the subdirectory installation. */
 define('WP_SITEURL', 'http://' . $_SERVER['HTTP_HOST'] . '/wordpress');
 define('WP_HOME',    'http://' . $_SERVER['HTTP_HOST']);
