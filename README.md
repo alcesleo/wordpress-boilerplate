@@ -63,6 +63,7 @@ the whole list with simply 'Initial commit'. Save and exit.
 Git will now rebase the entire repo into one commit. If you run `git log` you will see
 that only the 'Initial commit' shows up, but every file is still in place.
 
+You might need to run `git push -f` when pushing for the first time after this.
 
 ### Versioning the database
 
