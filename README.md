@@ -8,7 +8,13 @@ This is a repo where i collect WordPress best-practices, and try to make managin
 
 1.  Clone this repository
 
+        # Download this repo along with WordPress
         git clone --recursive git@github.com:alcesleo/wordpress-boilerplate.git
+
+        # Forgot to add the --recursive flag? No problem!
+        git submodule init
+        git submodule update
+
 
 2. Swap out the origin of the project to your own
 
@@ -33,9 +39,9 @@ This is a repo where i collect WordPress best-practices, and try to make managin
         git add wordpress
         git commit -m 'Checked out version 3.6 of WordPress'
 
-6. Create a `local-config.php` with the contents of this [gist](https://gist.github.com/alcesleo/6319370) in the `www/`-directory to set up your credentials.
+5. Create a `local-config.php` with the contents of this [gist](https://gist.github.com/alcesleo/6319370) in the `www/`-directory to set up your credentials.
 
-7. Start working on your site!
+6. Start working on your site!
 
 ### Versioning the database
 
