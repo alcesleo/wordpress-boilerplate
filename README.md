@@ -41,7 +41,28 @@ This is a repo where i collect WordPress best-practices, and try to make managin
 
 5. Create a `local-config.php` with the contents of this [gist](https://gist.github.com/alcesleo/6319370) in the `www/`-directory to set up your credentials.
 
-6. Start working on your site!
+6. Start working on your site! Don't forget to replace this readme with your own.
+
+### Very advanced optional step
+
+If you do not want the commit history of this repository in your own, you can
+rebase the entire repo into a single commit. This is very nice to do since
+you get a clean initial installation of this boilerplate, but none of its history
+(that is in no way related to your project anyway). It does however require some
+git skills.
+
+    # This only works in newer versions of git
+    git rebase --root -i
+
+This will open your default editor with a list of commits with the word *pick* before them.
+Change every instance of the word *pick* to say *squash* instead. **Except for the first one, Initial commit**. Then save and exit.
+
+Git will then open your editor again with a list of all commit-messages. This time, replace
+the whole list with simply 'Initial commit'. Save and exit.
+
+Git will now rebase the entire repo into one commit. If you run `git log` you will see
+that only the 'Initial commit' shows up, but every file is still in place.
+
 
 ### Versioning the database
 
