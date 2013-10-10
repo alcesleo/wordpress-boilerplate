@@ -4,8 +4,6 @@ This is a repo where i collect WordPress best-practices, and try to make managin
 
 ## Setup
 
-**WARNING: This has not yet been tested. If someone actually use this I'd appreciate any help with keeping the readme correct/helpful or suggestions of better ways of doing things.**
-
 1.  Clone this repository
 
         # Download this repo along with WordPress
@@ -25,7 +23,7 @@ This is a repo where i collect WordPress best-practices, and try to make managin
         git remote rm origin
 
         # Add your own origin
-        git remote add origin <url_from_your_repo>
+        git remote add origin <url_to_your_repo>
 
 3.  Check out the version of WordPress you want.
 
