@@ -42,7 +42,7 @@ appropriate name. (probably local-config.php`)
 
 6. Start working on your site! Don't forget to replace this readme with your own.
 
-### Very advanced optional step
+### Advanced optional step
 
 If you do not want the commit history of this repository in your own, you can
 rebase the entire repo into a single commit. This is very nice to do since
