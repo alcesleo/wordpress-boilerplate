@@ -38,7 +38,7 @@ This is a repo where i collect WordPress best-practices, and try to make managin
         git commit -m 'Checked out version 3.6 of WordPress'
 
 5. Update the `sample-config.php` with your credentials and rename it to the
-appropriate name. (probably local-config.php`)
+appropriate name. (probably `local-config.php`)
 
 6. Start working on your site! Don't forget to replace this readme with your own.
 
