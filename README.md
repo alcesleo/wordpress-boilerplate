@@ -197,3 +197,7 @@ This is things I've figured out about WordPress in general, not just about this 
     + Clean Options
     + Widget Logic
     + Better Delete Revision - In case you didn't disable them from the start
+
+## License
+
+[**WTFPL**](http://www.wtfpl.net/)
