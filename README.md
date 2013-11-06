@@ -192,19 +192,8 @@ This is things I've figured out about WordPress in general, not just about this 
 
 + These plugins are really worth checking out:
     + Contact Form 7
+    + Crayon Syntax Highlighter
     + Adminimize
     + Clean Options
     + Widget Logic
     + Better Delete Revision - In case you didn't disable them from the start
-
-
-## TODO
-
-
-+ add db-backup-folder?
-+ wp-content
-    + templates?
-        + plugin
-        + child theme
-+ wp-config
-    + local-config
